@@ -44,7 +44,7 @@ class Quote
   # !aq  or !addquote <text>
   def add_quote(m,text)
     file = File.new(@@file, "a")
-    file.write("\n"+text)
+    file.write(text+"\n")
     file.close
     m.reply "Quote added."
   end
