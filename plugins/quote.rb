@@ -1,7 +1,7 @@
 class Quote
   include Cinch::Plugin
+
   @@file = 'quote.txt'
-  @@last_quote = ""
 
   # common methods
   def db
@@ -43,7 +43,7 @@ class Quote
     file = File.new(@@file, "a")
     file.write("\n"+text)
     file.close
-    m.reply "Quote added: #{text}"
+    m.reply "Quote added."
   end
 
   # !dq or !delquote <id>
