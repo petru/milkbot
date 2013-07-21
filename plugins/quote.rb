@@ -22,7 +22,7 @@ class Quote
   # q, !q or !quote [id]
   def quote(m,id)
     quotes = self.db
-    quote = id.empty? ? Random.rand(quotes.size-1) : id.to_i
+    quote = id.empty? ? Random.rand(quotes.size) : id.to_i
     if quotes[quote]
       m.reply "[#{quote}/#{quotes.size-1}] #{quotes[quote]}"
     else
