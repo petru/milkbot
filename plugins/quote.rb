@@ -24,7 +24,7 @@ class Quote
     quotes = self.db
     quote = id.empty? ? Random.rand(quotes.size) : id.to_i
     if quotes[quote]
-      m.reply "[#{quote}/#{quotes.size-1}] #{quotes[quote]}"
+      m.reply "[#{quote}/#{quotes.size}] #{quotes[quote]}"
     else
       m.reply "No such quote. Valid range: 0-#{quotes.size-1}"
     end
