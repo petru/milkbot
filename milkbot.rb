@@ -5,6 +5,7 @@ require 'rubygems'
 require './plugins/youtube'
 require './plugins/tv'
 require './plugins/quote'
+require './plugins/liveleak'
 
 bot = Cinch::Bot.new do 
   configure do |c|
@@ -12,7 +13,7 @@ bot = Cinch::Bot.new do
     c.channels = ["#rendez-vous"]
     c.nick = "milkbot"
     c.realname = "mILKbot 0.1 beta!"
-    c.plugins.plugins = [Youtube, Tv, Quote]
+    c.plugins.plugins = [Youtube, Tv, Quote, Liveleak]
   end
 
   on :message, "test" do |m|
