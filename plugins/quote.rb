@@ -5,10 +5,13 @@ class Quote
 
   # common methods
   def db
-    f = open(@@file)
-    quotes = f.read.split("\n")
-    f.close
-    return quotes
+    if File.exists?(@@file)
+      f = open(@@file)
+      quotes = f.read.split("\n")
+      f.close
+      return quotes
+    else return []
+    end
   end
 
   match /^!?(?:quote|q)(:?\s?(\d*)|)$/i, method: :quote, prefix: ""
