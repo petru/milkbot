@@ -3,7 +3,7 @@ require 'youtube_it'
 class Youtube
   include Cinch::Plugin
 
-  match /.*(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?(\w{10,}).*/ix, prefix:""
+  match /.*(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?(\S{10,}).*/ix, prefix:""
 
   def execute(m,id)
     client = YouTubeIt::Client.new
