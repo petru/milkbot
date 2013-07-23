@@ -17,6 +17,7 @@ class Quote
   match /^!?(?:quote|q)(:?\s?(\d*)|)$/i, method: :quote, prefix: ""
   match /^!?(?:findquote|fq)\s?(.+)$/i, method: :find_quote, prefix: ""
   match /(?:addquote|aq)\s(.*)$/i, method: :add_quote
+  match /(?:delquote|dq)\s?(\d*)$/i, method: :delete_quote
 
 
   # q, !q or !quote [id]
@@ -50,5 +51,18 @@ class Quote
   end
 
   # !dq or !delquote <id>
+  def delete_quote(m,id)
+    quotes = self.db
+    id = id.to_i
 
+    unless quotes.delete_at(id).nil?
+      m.reply "Quote #{id} deleted."
+    else
+      m.reply "Quote #{id} not found."
+    end
+    
+    file = File.new(@@file, "w:UTF-8")
+    file.write(quotes.join("\n")+"\n")
+    file.close
+  end
 end
