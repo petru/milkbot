@@ -33,7 +33,7 @@ class Quote
   # !fq or !findquote <query>
   def find_quote(m,query)
     quotes = self.db.shuffle
-    quotes.select! { |q| q.include? query }
+    quotes.select! { |q| q.include? query.downcase }
     if quotes.size > 1
       3.times { |x| m.reply "[#{x+1}/#{quotes.size}] #{quotes[x]}"}
     else
