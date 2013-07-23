@@ -6,7 +6,7 @@ class Quote
   # common methods
   def db
     if File.exists?(@@file)
-      f = open(@@file)
+      f = open(@@file, "r:UTF-8")
       quotes = f.read.split("\n")
       f.close
       return quotes
@@ -43,7 +43,7 @@ class Quote
 
   # !aq  or !addquote <text>
   def add_quote(m,text)
-    file = File.new(@@file, "a")
+    file = File.new(@@file, "a:UTF-8")
     file.write(text+"\n")
     file.close
     m.reply "Quote added."
