@@ -34,11 +34,11 @@ class Quote
   # !fq or !findquote <query>
   def find_quote(m,query)
     quotes = self.db.shuffle
-    quotes.select! { |q| q.include? query.downcase }
+    quotes.select! { |q| q.downcase.include? query.downcase }
     if quotes.size > 1
-      3.times { |x| m.reply "[#{x+1}/#{quotes.size}] #{quotes[x]}"}
+      (quotes.size>3?3:quotes.size).times { |x| m.reply "[#{x+1}/#{quotes.size}] #{quotes[x]}"}
     else
-      m.reply quotes[0]
+      m.reply quotes.shuffle[0]
     end
   end
 
@@ -60,7 +60,7 @@ class Quote
     else
       m.reply "Quote #{id} not found."
     end
-    
+
     file = File.new(@@file, "w:UTF-8")
     file.write(quotes.join("\n")+"\n")
     file.close
