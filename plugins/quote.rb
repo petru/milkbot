@@ -22,7 +22,7 @@ class Quote
 
   # q, !q or !quote [id]
   def quote(m,id)
-    quotes = self.db
+    quotes = db
     quote = id.empty? ? Random.rand(quotes.size) : id.to_i
     if (0...quotes.size).include? quote
       m.reply "[#{quote}/#{quotes.size-1}] #{quotes[quote]}"
@@ -33,7 +33,7 @@ class Quote
 
   # !fq or !findquote <query>
   def find_quote(m,query)
-    quotes = self.db.shuffle
+    quotes = db.shuffle
     quotes.select! { |q| q.downcase.include? query.downcase }
     if quotes.size > 1
       (quotes.size>3?3:quotes.size).times { |x| m.reply "[#{x+1}/#{quotes.size}] #{quotes[x]}"}
@@ -52,7 +52,7 @@ class Quote
 
   # !dq or !delquote <id>
   def delete_quote(m,id)
-    quotes = self.db
+    quotes = db
     id = id.to_i
 
     unless quotes.delete_at(id).nil?
