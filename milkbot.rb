@@ -7,14 +7,15 @@ require './plugins/youtube'
 require './plugins/tv'
 require './plugins/quote'
 require './plugins/liveleak'
+require './plugins/monitor'
 
 bot = Cinch::Bot.new do 
   configure do |c|
-    c.server = "chat.itarea.net"
-    c.channels = ["#rendez-vous"]
-    c.nick = "milkbot"
-    c.realname = "mILKbot 0.1 beta!"
-    c.plugins.plugins = [Youtube, Tv, Quote, Liveleak]
+    c.server = "irc.carnique.nl"
+    c.channels = ["#ankeborg"]
+    c.nick = "laptic"
+    c.realname = "mILKbot 0.2"
+    c.plugins.plugins = [Youtube, Tv, Quote, Liveleak, Monitor]
   end
 
   on :message, "test" do |m|
