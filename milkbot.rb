@@ -15,7 +15,7 @@ bot = Cinch::Bot.new do
     c.channels = ["#ankeborg"]
     c.nick = "laptic"
     c.realname = "mILKbot 0.2"
-    c.plugins.plugins = [Youtube, Tv, Quote, Liveleak, Monitor]
+    c.plugins.plugins = [Youtube, Tv, Quote, Liveleak, Monitor, Kat]
   end
 
   on :message, "test" do |m|
