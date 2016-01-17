@@ -4,6 +4,7 @@ require 'json'
 class Weather
   include Cinch::Plugin
   match /weather (.*)$/i, prefix: ".", method: :weather
+  match /w (.*)$/i, prefix: ".", method: :weather
   
   def k_to_c(temp)
     return temp - 273.15
